@@ -1,0 +1,6 @@
+encrypt.key-store:
+  alias: test
+  location: classpath:/keystore.jks
+  password: testing
+
+my-secret: '{cipher}AQA/kvqTuwvqWyc6oJtWkt+kU+07eBdR9hxhxCiaxmbG/0XrQWWcoPlx2v8xqFL/eTfJqK/EvtjK40ZsT7KqGDz9OvvaKvqcOHr+x2d4StWGSHh9p0/iYheCRVgAFuNIIhTVXL8u29FYvoGCemRxir5i3A0QcZpmd8qDr4dK0iBUvlH3C2qPhSLA7EfG1kvJyn2qlBvxJUoR9/B1bHdY8aXZ32+UafArEv89N1y0ATWgqSwWpaXN1ToV4WB2VJE+4dXpOSAttEOvsVhLaSjyjRjWg0/ygoYWiuxdtFa2mzjfvKunifRd9rejArX34GcPEoyhzO/zkmuEIaDVe0ESEGP5zdCNqCaQvk5Em/PMZkEBA2/w6/Eu0tSxOJ3BNTe5CZnkynFxHZuRMZMiCD/bTzo5'
