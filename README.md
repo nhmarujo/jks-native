@@ -36,19 +36,31 @@ To reproduce it, you can build the native image and try to run it:
 ```
 
 The application will fail to run with the following error:
-```
-Description:
-
-Failed to bind properties under 'encrypt.key-store.location' to org.springframework.core.io.Resource:
-
-    Property: encrypt.key-store.location
-    Value: "classpath:/keystore.jks"
-    Origin: class path resource [application.yml] - 3:13
-    Reason: org.springframework.core.convert.ConverterNotFoundException: No converter found capable of converting from type [java.lang.String] to type [org.springframework.core.io.Resource]
-
-Action:
-
-Update your application's configuration
+```java
+12:15:38.869 [main] ERROR org.springframework.boot.SpringApplication -- Application run failed
+java.lang.NullPointerException: null
+        at org.springframework.cloud.context.encrypt.EncryptorFactory.create(EncryptorFactory.java:55)
+        at org.springframework.cloud.bootstrap.encrypt.TextEncryptorUtils.getTextEncryptor(TextEncryptorUtils.java:66)
+        at org.springframework.cloud.bootstrap.encrypt.TextEncryptorUtils.decrypt(TextEncryptorUtils.java:51)
+        at org.springframework.cloud.bootstrap.encrypt.DecryptEnvironmentPostProcessor.postProcessEnvironment(DecryptEnvironmentPostProcessor.java:66)
+        at org.springframework.boot.env.EnvironmentPostProcessorApplicationListener.onApplicationEnvironmentPreparedEvent(EnvironmentPostProcessorApplicationListener.java:109)
+        at org.springframework.boot.env.EnvironmentPostProcessorApplicationListener.onApplicationEvent(EnvironmentPostProcessorApplicationListener.java:94)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+        at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:131)
+        at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:136)
+        at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:81)
+        at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$2(SpringApplicationRunListeners.java:64)
+        at java.base@17.0.6/java.lang.Iterable.forEach(Iterable.java:75)
+        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:118)
+        at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:112)
+        at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:63)
+        at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:355)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:306)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1305)
+        at org.springframework.boot.SpringApplication.run(SpringApplication.java:1294)
+        at com.sample.jksnative.JksNativeApplication.main(JksNativeApplication.java:17)
 ```
 
 ### Some notes
